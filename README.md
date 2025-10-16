@@ -38,8 +38,10 @@ This project analyzes wholesale meat price trends in the U.S. from 2000 to 2024 
 - Implemented hyperparameter tuning using grid search for optimized performance.
 
 ### 5. Model Training and Evaluation
-- Split data into training and testing sets respecting time order.  
-- Validated stationarity prerequisites for SARIMA and transformed data when necessary.  
+- Stationarity tests applied to prepare time series data for SARIMA.  
+- Lagged price features and external variables included to enhance learning.  
+- Hyperparameter tuning conducted for all models to optimize predictive performance.  
+- Split data into training and testing sets respecting time order.   
 - Trained models with and without external features for comparative analysis.  
 - Evaluated performances using R2 Score (variance explanation) and RMSE (average error magnitude).
 
