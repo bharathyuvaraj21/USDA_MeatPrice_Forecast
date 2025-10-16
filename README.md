@@ -1,59 +1,75 @@
 # 📊 Forecasting Wholesale Meat Prices: Time Series Analysis on USDA Meat Price Trends
 
 ## 📘 Project Overview
-This project analyzes wholesale meat price trends in the U.S. using USDA data from 2000 to 2024. It applies advanced time series forecasting and machine learning models to predict future prices of various meat subtypes, supporting informed decision-making for stakeholders in food production, trading, and policy. The project explores price volatility, seasonality, and the influence of external economic and environmental factors.
+This project analyzes wholesale meat price trends in the U.S. from 2000 to 2024 using USDA data. It applies advanced time series and machine learning forecasting models to predict future prices of various meat subtypes, aiding stakeholders in food production, trading, and policy decision-making. The study also explores price volatility, seasonality, and external economic and environmental influences.
 
 ---
 
 ## 🗃️ Data Sources
-- USDA Livestock and Meat Domestic Data for wholesale monthly meat prices.  
-- External datasets including weather (temperature, precipitation), disaster counts, economic indicators (CPI, unemployment rate, GDP), and feed commodity prices (corn, sorghum).
+- USDA Livestock and Meat Domestic Data for monthly wholesale meat prices.  
+- External data on weather (temperature, precipitation), disaster counts, economic indicators (CPI, unemployment, GDP), and feed commodity prices (corn, sorghum).
 
 ---
 
 ## ⚙️ Methodology
-- **Data Preprocessing:**  
-  Cleaning missing and zero values, feature engineering (time and external factors), integration of multiple datasets by month, and normalization using Min-Max scaling.
 
-- **Exploratory Data Analysis:**  
-  Descriptive statistics, price distribution histograms, seasonal and trend decomposition showing volatile market events like the COVID-19 pandemic impact.
+### 1. Data Collection and Integration
+- Historical wholesale meat price data obtained from USDA covering multiple meat subtypes.  
+- Collected external feature datasets: weather records, economic indicators, and disaster incidents.  
+- Unified all datasets by monthly time alignment using "Year-Month" as a key.
 
-- **Modeling Approaches:**  
-  - SARIMA for capturing seasonal and trend components in stationary data.  
-  - Random Forest Regression for robust nonlinear relationships via an ensemble of decision trees.  
-  - Gradient Boosting Regression for sequential improvement of prediction accuracy.  
-  - Support Vector Regression (SVR) targeting nonlinear regression with margin optimization.  
-  - Long Short-Term Memory (LSTM) neural network to model long-term dependencies and complex sequences.
+### 2. Data Preprocessing
+- Cleaned missing values and addressed zeros due to discontinued reporting periods.  
+- Created new features including lagged price variables and combined economic/environmental factors.  
+- Applied Min-Max scaling for uniform feature ranges, essential for model convergence.
+
+### 3. Exploratory Data Analysis (EDA)
+- Generated descriptive statistics to summarize price distributions and volatility.  
+- Visualized seasonal trends and historical price fluctuations across meat subtypes.  
+- Conducted correlation analyses between meat prices and external factors to identify influential variables.
+
+### 4. Model Selection and Development
+- Chose five models covering classical statistical and machine learning approaches:  
+   - SARIMA to model seasonality and trends in stationary price series.  
+   - Random Forest Regression to capture nonlinear relationships and interactions.  
+   - Gradient Boosting Regression for sequential error correction and fine-tuning.  
+   - Support Vector Regression (SVR) for regression with regularization and robustness.  
+   - Long Short-Term Memory (LSTM) neural networks for modeling complex temporal dependencies.  
+- Implemented hyperparameter tuning using grid search for optimized performance.
+
+### 5. Model Training and Evaluation
+- Split data into training and testing sets respecting time order.  
+- Validated stationarity prerequisites for SARIMA and transformed data when necessary.  
+- Trained models with and without external features for comparative analysis.  
+- Evaluated performances using R2 Score (variance explanation) and RMSE (average error magnitude).
+
+### 6. Result Interpretation and Visualization
+- Compared predictions versus actual prices across models and meat subtypes.  
+- Highlighted LSTM with external features as best overall performer (R2 ~0.8962, RMSE ~0.01571 for boxed beef).  
+- Noted SVR effectiveness without external features on imported boneless beef.  
+- Acknowledged Gradient Boosting robustness in loins and drumsticks subtypes.  
+- Identified key external features positively impacting forecast accuracy.
 
 ---
 
-## 🧪 Model Training and Evaluation
-- Stationarity tests applied to prepare time series data for SARIMA.  
-- Lagged price features and external variables included to enhance learning.  
-- Hyperparameter tuning conducted for all models to optimize predictive performance.  
-- Evaluation metrics:  
-  - R2 Score (Coefficient of Determination) to assess variance explained.  
-  - RMSE (Root Mean Squared Error) to measure average prediction error magnitudes.
-
----
-
-## 📈 Key Results
-- The LSTM model with integrated external features demonstrated the best forecasting accuracy overall, particularly for boxed beef cutout subtype, achieving an R2 score of 0.8962 and RMSE of 0.01571.  
-- SVR without external features performed well for imported boneless beef.  
-- Gradient Boosting showed robustness for loins and drumsticks.  
-- External features such as CPI, feed prices, and weather conditions contributed positively but were model and subtype dependent.  
-- Price trends reflected significant impact from major events like the COVID-19 pandemic causing price volatility.
+## 📈 Key Findings
+- Time series deep learning (LSTM) outperforms classical SARIMA and ensemble models in capturing complex price dynamics.  
+- Inclusion of external economic, weather, and commodity price data significantly enhances forecasts for many meat subtypes.  
+- Price dynamics reflect major events like the COVID-19 pandemic, causing spikes and volatility in meat prices.
 
 ---
 
 ## 💡 Practical Implications
-- Reliable price forecasts help in risk management, pricing strategies, and supply chain stability for agriculture and food industries.  
-- Insights assist policymakers and market participants in understanding price drivers and planning for future market conditions.
+- Improved forecasting reliability supports risk mitigation, pricing strategies, and supply chain management.  
+- Enables producers, retailers, and policymakers to anticipate market trends and adapt decisions proactively.
 
 ---
 
 ## 🚀 Future Work
-- Incorporate additional macroeconomic and consumer behavior data.  
-- Develop hybrid models combining strengths of different forecasting methods.  
-- Extend forecasting to other agricultural commodities for broader applicability.
-licability.
+- Explore integration of more diverse macroeconomic and consumer behavior datasets.  
+- Develop hybrid ensemble models combining strengths of multiple forecasting techniques.  
+- Extend forecasting frameworks to additional agricultural commodity markets for broader impact.
+
+---
+
+This comprehensive README format guides users and contributors through each stage of your detailed analytical and modeling pipeline, clearly communicating scope, methodology, and results.
